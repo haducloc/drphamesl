@@ -1,0 +1,1 @@
+/fixIdSeq?tableName=Vocab&idColumn=vocabId&idPkSeq=MODIFY+COLUMN+vocabId+INT+NOT+NULL+auto_increment+PRIMARY+KEY

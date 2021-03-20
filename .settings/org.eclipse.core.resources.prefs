@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/resources/common.vi.properties=UTF-8
+encoding//WebContent/WEB-INF/resources/messages.vi.properties=UTF-8
+encoding//src/main/java/com/drphamesl/services/AccountService.java=UTF-8
+encoding//src/main/java/com/drphamesl/services/AdUserService.java=UTF-8
+encoding//src/main/java/com/drphamesl/services/VocabListService.java=UTF-8
+encoding//src/main/java/com/drphamesl/services/VocabService.java=UTF-8
+encoding//src/main/java/com/drphamesl/services/VocabServiceUtil.java=UTF-8
