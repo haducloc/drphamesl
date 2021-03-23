@@ -2,7 +2,6 @@ package com.drphamesl.services;
 
 import java.util.List;
 
-import javax.annotation.Resource;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
@@ -27,7 +26,7 @@ public class MailMsgService {
 	@Inject
 	protected EntityManagerAccessor em;
 
-	@Resource
+	@Inject
 	protected UserTransaction tx;
 
 	@Inject
