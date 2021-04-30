@@ -41,7 +41,7 @@
 
           <p class="mb-3">
             <t:iterate items="${post.tagList}" var="tag">
-              <t:actionLink action="index" __tag="${fx:encParam(tag, true)}" clazz="tag-link mr-3">${fx:escCt(tag)}</t:actionLink>
+              <t:actionLink action="index" __tag="${tag}" clazz="tag-link mr-3">${fx:escCt(tag)}</t:actionLink>
             </t:iterate>
           </p>
 
@@ -61,7 +61,7 @@
         <t:pager model="${model.pagerModel}" tag="ul" clazz="pagination justify-content-center mb-4">
           <t:tpl type="page">
             <li class="page-item${selected ? ' active' : ''}">
-              <t:actionLink clazz="page-link" action="index" __tag="${fx:encParam(model.tag, true)}" __pageIndex="${item.index}">${label}</t:actionLink>
+              <t:actionLink clazz="page-link" action="index" __tag="${model.tag}" __pageIndex="${item.index}">${label}</t:actionLink>
             </li>
           </t:tpl>
           <t:tpl type="dots">
@@ -82,7 +82,7 @@
         <t:c t="ol" clazz="list-unstyled mb-0" render="${not empty model.blogTags}">
           <t:iterate items="${model.blogTags}" var="tag">
             <li class="mb-21">
-              <t:actionLink action="index" __tag="${fx:encParam(tag, true)}" clazz="tag-link">${fx:escCt(tag)}</t:actionLink>
+              <t:actionLink action="index" __tag="${tag}" clazz="tag-link">${fx:escCt(tag)}</t:actionLink>
             </li>
           </t:iterate>
         </t:c>
