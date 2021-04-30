@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 
 import com.appslandia.common.base.ToStringBuilder;
+import com.appslandia.common.caching.AppCacheManager;
 import com.appslandia.common.utils.MimeTypes;
 import com.appslandia.plum.base.ActionResult;
 import com.appslandia.plum.base.Authorize;
@@ -18,6 +19,7 @@ import com.appslandia.plum.results.JspResult;
 import com.appslandia.plum.results.RedirectResult;
 import com.appslandia.plum.results.TextResult;
 import com.appslandia.plum.utils.DebugUtils;
+import com.drphamesl.caching.Caches;
 import com.drphamesl.utils.AccountUtils;
 
 /**
@@ -32,6 +34,9 @@ public class AdminController {
 
 	@Inject
 	protected BasicRateLimitHandler rateLimitHandler;
+
+	@Inject
+	protected AppCacheManager appCacheManager;
 
 	@HttpGet
 	public ActionResult index(RequestAccessor request) throws Exception {
@@ -56,6 +61,13 @@ public class AdminController {
 	public ActionResult clientTrackers() throws Exception {
 		String text = new ToStringBuilder(3).toString(this.rateLimitHandler.getClientTrackers());
 		return new TextResult(text, MimeTypes.TEXT_PLAIN);
+	}
+
+	@HttpGet
+	public ActionResult clearCache(RequestAccessor request) throws Exception {
+		this.appCacheManager.clearCache(Caches.DEFAULT);
+		request.getMessages().addNotice("Done clearCache.");
+		return new RedirectResult("index");
 	}
 
 	@HttpGet
