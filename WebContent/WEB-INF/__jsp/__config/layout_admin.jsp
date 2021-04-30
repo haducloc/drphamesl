@@ -57,6 +57,7 @@
 
                 <div class="dropdown-divider"></div>
                 <t:actionLink clazz="dropdown-item" action="index" controller="manage-sql">${ctx.escCt('manage_sql_index.label')}</t:actionLink>
+                <t:actionLink clazz="dropdown-item" action="clearCache" controller="admin">${ctx.escCt('label.clear_cache')}</t:actionLink>
 
                 <div class="dropdown-divider"></div>
                 <t:actionLink clazz="dropdown-item" action="index" controller="manage-service">${ctx.escCt('manage_service_index.label')}</t:actionLink>
