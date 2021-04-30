@@ -61,7 +61,7 @@ public class BlogPostService {
 			BlogPost managed = em.find(BlogPost.class, obj.getPk());
 			AssertUtils.assertNotNull(managed);
 
-			ModelUtils.copy(managed, obj, "titleText", "contentText", "tags", "keywords", "descText", "imageUrl", "active");
+			ModelUtils.copy(managed, obj, "titleText", "contentText", "tags", "keywords", "descText", "imageUrl", "fbUrl", "active");
 		}
 
 		// Notify change
