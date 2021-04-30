@@ -161,7 +161,7 @@ public class ManagePostController {
 		BlogPost blogPost = blogPostService.findByPk(blogPostId);
 		request.assertNotFound(blogPost != null);
 
-		request.store("post", blogPost);
+		request.storeModel(blogPost);
 		request.store("blogTags", blogPostService.getBlogTags());
 
 		return new JspResult().path("/blog/post.jsp");
