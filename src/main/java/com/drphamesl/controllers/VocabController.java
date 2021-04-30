@@ -9,8 +9,8 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 
 import com.appslandia.common.base.Out;
-import com.appslandia.common.utils.NumberUtils;
 import com.appslandia.common.utils.ObjectUtils;
+import com.appslandia.common.utils.ParseUtils;
 import com.appslandia.common.utils.ValueUtils;
 import com.appslandia.plum.base.ActionResult;
 import com.appslandia.plum.base.Authorize;
@@ -81,7 +81,7 @@ public class VocabController {
 	public ActionResult list(RequestAccessor request, HttpServletResponse response, String pk, String title_path) throws Exception {
 		// PK
 		Out<Boolean> isPkInt = new Out<Boolean>();
-		int pkInt = NumberUtils.parseInt(pk, isPkInt);
+		int pkInt = ParseUtils.parseInt(pk, isPkInt);
 		request.assertNotFound(!isPkInt.val() || pkInt > 0);
 
 		// VocabLists
@@ -116,7 +116,7 @@ public class VocabController {
 			throws Exception {
 		// PK
 		Out<Boolean> isPkInt = new Out<Boolean>();
-		int pkInt = NumberUtils.parseInt(pk, isPkInt);
+		int pkInt = ParseUtils.parseInt(pk, isPkInt);
 		request.assertNotFound(!isPkInt.val() || pkInt > 0);
 
 		// VocabLists
@@ -180,7 +180,7 @@ public class VocabController {
 			throws Exception {
 		// PK
 		Out<Boolean> isPkInt = new Out<Boolean>();
-		int pkInt = NumberUtils.parseInt(pk, isPkInt);
+		int pkInt = ParseUtils.parseInt(pk, isPkInt);
 		request.assertNotFound(!isPkInt.val() || pkInt > 0);
 
 		// VocabLists
