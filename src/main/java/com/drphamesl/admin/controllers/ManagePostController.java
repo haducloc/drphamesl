@@ -144,7 +144,11 @@ public class ManagePostController {
 			this.blogPostService.save(model);
 			request.getMessages().addNotice(request.res("record.saved_successfully", request.res("blogPost")));
 
-			return new RedirectResult("edit").query("blogPostId", model.getBlogPostId());
+			if (model.getBlogPostId() != null) {
+				return new RedirectResult("index");
+			} else {
+				return new RedirectResult("edit");
+			}
 
 		} catch (Exception ex) {
 			logger.error(ex);

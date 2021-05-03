@@ -80,7 +80,11 @@ public class ManageFaqController {
 			this.faqService.save(model);
 			request.getMessages().addNotice(request.res("record.saved_successfully", request.res("faq")));
 
-			return new RedirectResult("edit").query("faqId", model.getFaqId());
+			if (model.getFaqId() != null) {
+				return new RedirectResult("index");
+			} else {
+				return new RedirectResult("edit");
+			}
 
 		} catch (Exception ex) {
 			logger.error(ex);

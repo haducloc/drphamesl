@@ -80,7 +80,11 @@ public class ManageEslResController {
 			this.eslResService.save(model);
 			request.getMessages().addNotice(request.res("record.saved_successfully", request.res("eslRes")));
 
-			return new RedirectResult("edit").query("eslResId", model.getEslResId());
+			if (model.getEslResId() != null) {
+				return new RedirectResult("index");
+			} else {
+				return new RedirectResult("edit");
+			}
 
 		} catch (Exception ex) {
 			logger.error(ex);

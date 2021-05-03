@@ -80,7 +80,11 @@ public class ManageServiceCatController {
 			this.serviceCatService.save(model);
 			request.getMessages().addNotice(request.res("record.saved_successfully", request.res("serviceCat")));
 
-			return new RedirectResult("edit").query("serviceCatId", model.getServiceCatId());
+			if (model.getServiceCatId() != null) {
+				return new RedirectResult("index");
+			} else {
+				return new RedirectResult("edit");
+			}
 
 		} catch (Exception ex) {
 			logger.error(ex);

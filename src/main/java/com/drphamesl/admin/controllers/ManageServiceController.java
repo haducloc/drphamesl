@@ -90,7 +90,11 @@ public class ManageServiceController {
 			this.serviceService.save(model);
 			request.getMessages().addNotice(request.res("record.saved_successfully", request.res("service")));
 
-			return new RedirectResult("edit").query("serviceId", model.getServiceId());
+			if (model.getServiceId() != null) {
+				return new RedirectResult("index");
+			} else {
+				return new RedirectResult("edit");
+			}
 
 		} catch (Exception ex) {
 			logger.error(ex);

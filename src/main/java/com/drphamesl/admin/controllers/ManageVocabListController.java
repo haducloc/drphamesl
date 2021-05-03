@@ -174,7 +174,12 @@ public class ManageVocabListController {
 			// Save
 			this.vocabListService.save(model);
 			request.getMessages().addNotice(request.res("record.saved_successfully", request.res("vocabList")));
-			return new RedirectResult("edit").query("vocabListId", model.getVocabListId());
+
+			if (model.getVocabListId() != null) {
+				return new RedirectResult("index");
+			} else {
+				return new RedirectResult("edit");
+			}
 
 		} catch (Exception ex) {
 			logger.error(ex);
