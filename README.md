@@ -1,7 +1,7 @@
 # drphamesl.com
  - ESL (English as a Second Language) Services
  - English Vocabulary Collections
- - http://drphamesl.com
+ - https://drphamesl.com
 # Technologies
  - Java, Java EE 8 (Servlet/JSP, JPA, JDBC, CDI, JTA, Bean Validation, Java Mail, Java EE Security)
  - Bootstrap 4.6, JQuery, JavaScript, MySQL
