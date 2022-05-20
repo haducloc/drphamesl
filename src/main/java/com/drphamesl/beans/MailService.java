@@ -160,7 +160,7 @@ public class MailService {
 
 	SmtpMailer initSmtpMailer(String configFile) throws InitializeException {
 		try {
-			SecureProps props = new SecureProps("${smtpPassword,env.DPESL_SMTP_PWD}");
+			SecureProps props = new SecureProps("${smtpPassword,env.DPESL_SMTP_PWD:drphamesl}");
 			ServletUtils.loadProps(sc, configFile, props);
 			return new SmtpMailer().setProps(props);
 
