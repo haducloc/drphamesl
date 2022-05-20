@@ -98,7 +98,7 @@ public class VocabService {
 	public List<Vocab> query(String query, int pageIndex, int pageSize, Out<Integer> recordCount) {
 		if (recordCount.value == null || recordCount.value <= 0) {
 			recordCount.value = em.createNamedQuery("Vocab.queryCount").setParameter("query", query).setLike("wtag", TagUtils.wrapTag(query))
-					.setLikeSW("s_words", query).getSingleOrNull();
+					.setLikeSW("s_words", query).getCount();
 		}
 
 		final int startPos = (pageIndex - 1) * pageSize;

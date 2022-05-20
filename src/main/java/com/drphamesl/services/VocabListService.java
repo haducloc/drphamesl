@@ -71,7 +71,7 @@ public class VocabListService {
 
 	public List<VocabList> query(Integer shareType, String tag, int pageIndex, int pageSize, Out<Integer> recordCount) {
 		if (recordCount.value == null || recordCount.value <= 0) {
-			recordCount.value = em.createNamedQuery("VocabList.queryCount").setParameter("shareType", shareType).setParameter("tag", tag).getSingleOrNull();
+			recordCount.value = em.createNamedQuery("VocabList.queryCount").setParameter("shareType", shareType).setParameter("tag", tag).getCount();
 		}
 
 		final int startPos = (pageIndex - 1) * pageSize;

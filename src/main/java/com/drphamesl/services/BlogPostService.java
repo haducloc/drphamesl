@@ -80,7 +80,7 @@ public class BlogPostService {
 	public List<BlogPost> query(String tag, int pageIndex, int pageSize, Out<Integer> recordCount) {
 		if (recordCount.value == null || recordCount.value <= 0) {
 			recordCount.value = em.createNamedQuery("BlogPost.queryCount").setParameter("active", 0).setParameter("tag", tag)
-					.setLike("wtag", TagUtils.wrapTag(tag)).getSingleOrNull();
+					.setLike("wtag", TagUtils.wrapTag(tag)).getCount();
 		}
 
 		final int startPos = (pageIndex - 1) * pageSize;

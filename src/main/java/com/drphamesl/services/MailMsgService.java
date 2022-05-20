@@ -42,7 +42,7 @@ public class MailMsgService {
 		try {
 			em = emf.createEntityManager();
 
-			return em.createNamedQuery("MailMsg.countSent").setParameter("mailerId", mailerId).setParameter("fromTime", fromTime).getSingleOrNull();
+			return em.createNamedQuery("MailMsg.countSent").setParameter("mailerId", mailerId).setParameter("fromTime", fromTime).getCount();
 
 		} finally {
 			if (em != null) {
