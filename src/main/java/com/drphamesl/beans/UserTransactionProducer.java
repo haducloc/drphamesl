@@ -1,13 +1,13 @@
 package com.drphamesl.beans;
 
-import javax.annotation.Priority;
-import javax.annotation.Resource;
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.Dependent;
-import javax.enterprise.inject.Alternative;
-import javax.enterprise.inject.Produces;
-import javax.interceptor.Interceptor;
-import javax.transaction.UserTransaction;
+import jakarta.annotation.Priority;
+import jakarta.annotation.Resource;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.Dependent;
+import jakarta.enterprise.inject.Alternative;
+import jakarta.enterprise.inject.Produces;
+import jakarta.interceptor.Interceptor;
+import jakarta.transaction.UserTransaction;
 
 /**
  *

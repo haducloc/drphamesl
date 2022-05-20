@@ -1,17 +1,17 @@
 package com.drphamesl.services;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.transaction.Transactional;
-
 import com.appslandia.common.base.UUIDGenerator;
-import com.appslandia.common.jpa.EntityManagerAccessor;
+import com.appslandia.common.jpa.EntityManagerImpl;
 import com.appslandia.common.utils.AssertUtils;
 import com.appslandia.common.utils.ModelUtils;
 import com.drphamesl.entities.Account;
 import com.drphamesl.entities.Signup;
 import com.drphamesl.utils.AccountUtils;
 import com.drphamesl.utils.NewsTypes;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 
 /**
  *
@@ -22,7 +22,7 @@ import com.drphamesl.utils.NewsTypes;
 public class AccountService {
 
 	@Inject
-	protected EntityManagerAccessor em;
+	protected EntityManagerImpl em;
 
 	public Account findByPk(int accountId) throws Exception {
 		return em.find(Account.class, accountId);

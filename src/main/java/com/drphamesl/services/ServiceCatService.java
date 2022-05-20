@@ -3,11 +3,7 @@ package com.drphamesl.services;
 import java.util.Collections;
 import java.util.List;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.transaction.Transactional;
-
-import com.appslandia.common.jpa.EntityManagerAccessor;
+import com.appslandia.common.jpa.EntityManagerImpl;
 import com.appslandia.common.utils.AssertUtils;
 import com.appslandia.common.utils.BitBool;
 import com.appslandia.common.utils.ModelUtils;
@@ -15,6 +11,10 @@ import com.appslandia.plum.caching.CacheChangeEvent;
 import com.appslandia.plum.caching.CacheResult;
 import com.drphamesl.caching.Caches;
 import com.drphamesl.entities.ServiceCat;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 
 /**
  *
@@ -27,7 +27,7 @@ public class ServiceCatService {
 	static final String CACHE_KEY_SERVICES = "services";
 
 	@Inject
-	protected EntityManagerAccessor em;
+	protected EntityManagerImpl em;
 
 	@Inject
 	protected CacheChangeEvent cacheChangeEvent;

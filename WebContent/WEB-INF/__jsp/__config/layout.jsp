@@ -14,7 +14,7 @@
 <meta name="description" content="@(page.desc)">
 <meta name="keywords" content="@(page.keywords)" />
 <meta name="author" content="@(page.author)" />
-<meta name="robots" content="@{page.robots}" />
+<meta name="robots" content='@{page.robots}' />
 
 <meta property="og:url" content="${ctx.requestUrl}" />
 <meta property="og:title" content="@{page.title}" />

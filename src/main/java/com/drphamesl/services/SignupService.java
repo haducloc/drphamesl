@@ -2,17 +2,17 @@ package com.drphamesl.services;
 
 import java.util.List;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.transaction.Transactional;
-
 import com.appslandia.common.base.UUIDGenerator;
-import com.appslandia.common.jpa.EntityManagerAccessor;
+import com.appslandia.common.jpa.EntityManagerImpl;
 import com.appslandia.common.logging.AppLogger;
 import com.drphamesl.entities.Account;
 import com.drphamesl.entities.Signup;
 import com.drphamesl.utils.AccountUtils;
 import com.drphamesl.utils.NewsTypes;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 
 /**
  *
@@ -26,7 +26,7 @@ public class SignupService {
 	protected AppLogger appLogger;
 
 	@Inject
-	protected EntityManagerAccessor em;
+	protected EntityManagerImpl em;
 
 	public List<Signup> queryAll() {
 		return em.createNamedQuery("Signup.queryAll", Signup.class).asReadonly().getResultList();

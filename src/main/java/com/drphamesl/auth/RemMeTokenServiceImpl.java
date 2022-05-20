@@ -1,18 +1,18 @@
 package com.drphamesl.auth;
 
-import javax.annotation.Priority;
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Alternative;
-import javax.inject.Inject;
-import javax.interceptor.Interceptor;
-import javax.persistence.Query;
-import javax.transaction.Transactional;
-
-import com.appslandia.common.jpa.EntityManagerAccessor;
+import com.appslandia.common.jpa.EntityManagerImpl;
 import com.appslandia.common.logging.AppLogger;
 import com.appslandia.common.utils.AssertUtils;
 import com.appslandia.plum.base.RemMeToken;
 import com.appslandia.plum.base.RemMeTokenManager;
+
+import jakarta.annotation.Priority;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.inject.Alternative;
+import jakarta.inject.Inject;
+import jakarta.interceptor.Interceptor;
+import jakarta.persistence.Query;
+import jakarta.transaction.Transactional;
 
 /**
  *
@@ -25,7 +25,7 @@ import com.appslandia.plum.base.RemMeTokenManager;
 public class RemMeTokenServiceImpl implements RemMeTokenManager {
 
 	@Inject
-	protected EntityManagerAccessor em;
+	protected EntityManagerImpl em;
 
 	@Inject
 	protected AppLogger logger;

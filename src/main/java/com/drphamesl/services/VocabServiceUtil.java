@@ -5,16 +5,16 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-
-import com.appslandia.common.jpa.EntityManagerAccessor;
+import com.appslandia.common.jpa.EntityManagerImpl;
 import com.appslandia.common.utils.TagUtils;
 import com.appslandia.plum.caching.CacheChangeEvent;
 import com.appslandia.plum.caching.CacheResult;
 import com.appslandia.plum.caching.CacheUtils;
 import com.drphamesl.caching.Caches;
 import com.drphamesl.entities.Vocab;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 
 /**
  *
@@ -27,14 +27,14 @@ public class VocabServiceUtil {
 	static final String CACHE_KEY_VOCABS = "vocabs-${0}";
 
 	@Inject
-	protected EntityManagerAccessor em;
+	protected EntityManagerImpl em;
 
 	@Inject
 	protected CacheChangeEvent cacheChangeEvent;
 
 	@CacheResult(cacheName = Caches.DEFAULT, key = CACHE_KEY_VOCABS)
 	public List<Vocab> getVocabs(String tag) {
-		List<Vocab> list = em.createNamedQuery("Vocab.queryByTag", Vocab.class).setLikeTag("wtag", tag).getResultList();
+		List<Vocab> list = em.createNamedQuery("Vocab.queryByTag", Vocab.class).setLike("wtag", TagUtils.wrapTag(tag)).getResultList();
 		return Collections.unmodifiableList(list);
 	}
 

@@ -5,15 +5,6 @@ import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
-import javax.persistence.Transient;
-import javax.validation.constraints.NotNull;
-
 import com.appslandia.common.base.Bind;
 import com.appslandia.common.base.NotBind;
 import com.appslandia.common.formatters.Formatter;
@@ -23,6 +14,15 @@ import com.appslandia.common.validators.MaxLength;
 import com.drphamesl.formatters.Formatters;
 import com.drphamesl.utils.DefGroup;
 import com.drphamesl.utils.VocabUtils;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.Transient;
+import jakarta.validation.constraints.NotNull;
 
 /**
  *

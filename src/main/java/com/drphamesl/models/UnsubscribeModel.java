@@ -1,12 +1,12 @@
 package com.drphamesl.models;
 
-import javax.validation.constraints.NotNull;
-
 import com.appslandia.common.base.Bind;
 import com.appslandia.common.formatters.Formatter;
 import com.appslandia.common.validators.Email;
 import com.appslandia.common.validators.ValidInts;
 import com.drphamesl.utils.NewsTypes;
+
+import jakarta.validation.constraints.NotNull;
 
 /**
  *

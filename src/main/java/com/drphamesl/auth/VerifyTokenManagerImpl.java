@@ -1,16 +1,16 @@
 package com.drphamesl.auth;
 
-import javax.annotation.Priority;
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Alternative;
-import javax.inject.Inject;
-import javax.interceptor.Interceptor;
-import javax.transaction.Transactional;
-
-import com.appslandia.common.jpa.EntityManagerAccessor;
+import com.appslandia.common.jpa.EntityManagerImpl;
 import com.appslandia.common.logging.AppLogger;
 import com.appslandia.plum.base.VerifyToken;
 import com.appslandia.plum.base.VerifyTokenManager;
+
+import jakarta.annotation.Priority;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.inject.Alternative;
+import jakarta.inject.Inject;
+import jakarta.interceptor.Interceptor;
+import jakarta.transaction.Transactional;
 
 /**
  *
@@ -23,7 +23,7 @@ import com.appslandia.plum.base.VerifyTokenManager;
 public class VerifyTokenManagerImpl implements VerifyTokenManager {
 
 	@Inject
-	protected EntityManagerAccessor em;
+	protected EntityManagerImpl em;
 
 	@Inject
 	protected AppLogger logger;

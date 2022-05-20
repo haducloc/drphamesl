@@ -2,20 +2,20 @@ package com.drphamesl.entities;
 
 import java.io.Serializable;
 
-import javax.mail.internet.AddressException;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedNativeQuery;
-import javax.persistence.NamedQuery;
-import javax.validation.constraints.NotNull;
-
 import com.appslandia.common.jpa.EntityBase;
 import com.appslandia.common.mail.MailerMessage;
 import com.appslandia.common.utils.BitBool;
 import com.appslandia.common.validators.BoolType;
+
+import jakarta.mail.internet.AddressException;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.NamedNativeQuery;
+import jakarta.persistence.NamedQuery;
+import jakarta.validation.constraints.NotNull;
 
 /**
  *

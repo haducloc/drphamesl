@@ -1,10 +1,10 @@
 package com.drphamesl.auth;
 
-import javax.enterprise.context.ApplicationScoped;
-
 import com.appslandia.common.base.MappedID;
 import com.appslandia.plum.base.FormAuthHandler;
 import com.appslandia.plum.base.Modules;
+
+import jakarta.enterprise.context.ApplicationScoped;
 
 /**
  *

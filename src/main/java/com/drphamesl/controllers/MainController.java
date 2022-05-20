@@ -1,10 +1,5 @@
 package com.drphamesl.controllers;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletResponse;
-
 import com.appslandia.plum.base.ActionResult;
 import com.appslandia.plum.base.Controller;
 import com.appslandia.plum.base.EnableEtag;
@@ -14,6 +9,11 @@ import com.appslandia.plum.base.RequestAccessor;
 import com.appslandia.plum.results.JspResult;
 import com.drphamesl.beans.MailService;
 import com.drphamesl.services.ServiceCatService;
+
+import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *

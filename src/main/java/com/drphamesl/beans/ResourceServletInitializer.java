@@ -2,13 +2,13 @@ package com.drphamesl.beans;
 
 import java.util.List;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-
 import com.appslandia.plum.base.DynServletRegister;
 import com.appslandia.plum.base.Startup;
 import com.appslandia.plum.base.StartupConfig;
 import com.appslandia.plum.utils.ResourceServlets;
+
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
 
 /**
  *

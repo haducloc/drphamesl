@@ -5,6 +5,8 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
+import java.sql.ResultSet;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.commons.csv.CSVFormat;
@@ -13,11 +15,10 @@ import org.apache.commons.csv.CSVPrinter;
 import com.appslandia.common.base.MemoryStream;
 import com.appslandia.common.base.Out;
 import com.appslandia.common.base.StringWriter;
-import com.appslandia.common.easyrecord.Record;
-import com.appslandia.common.easyrecord.RecordUtils;
 import com.appslandia.common.jdbc.JdbcUtils;
-import com.appslandia.common.jdbc.ResultSetImpl;
 import com.appslandia.common.json.JsonProcessor;
+import com.appslandia.common.record.Record;
+import com.appslandia.common.record.RecordUtils;
 
 /**
  *
@@ -26,13 +27,13 @@ import com.appslandia.common.json.JsonProcessor;
  */
 public class ResultUtils {
 
-	public static String executeCSV(ResultSetImpl rs, Out<Integer> count) throws Exception {
+	public static String executeCSV(ResultSet rs, Out<Integer> count) throws Exception {
 		final String[] columnLabels = JdbcUtils.getColumnLabels(rs);
-		final List<Record> records = RecordUtils.executeList(rs);
+		final List<Record> records = JdbcUtils.executeList(JdbcUtils.toImpl(rs), r -> RecordUtils.toRecord(r, columnLabels), new LinkedList<>());
 		count.value = records.size();
 
 		// CSV
-		CSVFormat format = CSVFormat.EXCEL.withHeader(columnLabels);
+		CSVFormat format = CSVFormat.EXCEL.builder().setHeader(columnLabels).build();
 		MemoryStream ms = new MemoryStream();
 
 		try (Writer out = new BufferedWriter(new OutputStreamWriter(ms, StandardCharsets.UTF_8))) {
@@ -46,8 +47,9 @@ public class ResultUtils {
 		return ms.toString(StandardCharsets.UTF_8);
 	}
 
-	public static String executeJson(ResultSetImpl rs, JsonProcessor jsonProcessor, Out<Integer> count) throws Exception {
-		final List<Record> records = RecordUtils.executeList(rs);
+	public static String executeJson(ResultSet rs, JsonProcessor jsonProcessor, Out<Integer> count) throws Exception {
+		final String[] columnLabels = JdbcUtils.getColumnLabels(rs);
+		final List<Record> records = JdbcUtils.executeList(JdbcUtils.toImpl(rs), r -> RecordUtils.toRecord(r, columnLabels), new LinkedList<>());
 		count.value = records.size();
 
 		MemoryStream ms = new MemoryStream();

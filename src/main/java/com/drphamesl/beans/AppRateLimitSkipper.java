@@ -1,14 +1,14 @@
 package com.drphamesl.beans;
 
-import javax.annotation.Priority;
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Alternative;
-import javax.interceptor.Interceptor;
-import javax.servlet.http.HttpServletRequest;
-
 import com.appslandia.plum.base.Modules;
 import com.appslandia.plum.base.RateLimitSkipper;
 import com.appslandia.plum.base.RequestContext;
+
+import jakarta.annotation.Priority;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.inject.Alternative;
+import jakarta.interceptor.Interceptor;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  *

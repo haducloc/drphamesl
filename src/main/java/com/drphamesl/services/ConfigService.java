@@ -2,12 +2,12 @@ package com.drphamesl.services;
 
 import java.util.List;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.transaction.Transactional;
-
-import com.appslandia.common.jpa.EntityManagerAccessor;
+import com.appslandia.common.jpa.EntityManagerImpl;
 import com.drphamesl.entities.Config;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 
 /**
  *
@@ -18,7 +18,7 @@ import com.drphamesl.entities.Config;
 public class ConfigService {
 
 	@Inject
-	protected EntityManagerAccessor em;
+	protected EntityManagerImpl em;
 
 	public Config findByPk(String pk) {
 		return em.find(Config.class, pk);

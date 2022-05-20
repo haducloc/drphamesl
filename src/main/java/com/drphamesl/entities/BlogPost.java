@@ -3,14 +3,6 @@ package com.drphamesl.entities;
 import java.io.Serializable;
 import java.time.OffsetDateTime;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
-import javax.validation.constraints.NotNull;
-
 import org.jsoup.Jsoup;
 
 import com.appslandia.common.base.Bind;
@@ -21,6 +13,14 @@ import com.appslandia.common.utils.TagUtils;
 import com.appslandia.common.validators.BoolType;
 import com.appslandia.common.validators.PathComponent;
 import com.drphamesl.formatters.Formatters;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.NamedQuery;
+import jakarta.validation.constraints.NotNull;
 
 /**
  *

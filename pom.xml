@@ -1,6 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.appslandia</groupId>
@@ -15,15 +13,45 @@
 		</developer>
 	</developers>
 
+	<properties>
+		<module.name>com.drphamesl</module.name>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
+
+		<version.maven-compiler-plugin>3.8.1</version.maven-compiler-plugin>
+		<version.maven-war-plugin>3.3.2</version.maven-war-plugin>
+		<version.maven-surefire-plugin>3.0.0-M6</version.maven-surefire-plugin>
+
+		<version.appslandia-common>10.6.1</version.appslandia-common>
+		<version.appslandia-plum>9.2</version.appslandia-plum>
+		<version.appslandia-sweetsop>3.3</version.appslandia-sweetsop>
+		<version.appslandia-jsp-processor>1.7</version.appslandia-jsp-processor>
+
+		<version.jakarta.platform>9.1.0</version.jakarta.platform>
+		<version.jakarta.jstl-impl>2.0.0</version.jakarta.jstl-impl>
+
+		<version.jsoup>1.15.1</version.jsoup>
+		<version.log4j-api>2.17.2</version.log4j-api>
+		<version.log4j-core>2.17.2</version.log4j-core>
+		<version.log4j-jakarta-web>2.17.2</version.log4j-jakarta-web>
+
+		<version.ehcache>3.10.0</version.ehcache>
+		<version.commons-csv>1.9.0</version.commons-csv>
+
+		<version.junit>4.13.2</version.junit>
+		<version.junit-jupiter-api>5.8.2</version.junit-jupiter-api>
+	</properties>
+
 	<build>
 		<finalName>drphamesl</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
+				<version>${version.maven-compiler-plugin}</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<release>11</release>
 					<parameters>true</parameters>
 					<compilerArgs>
 						<arg>-parameters</arg>
@@ -32,7 +60,7 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>3.2.3</version>
+				<version>${version.maven-war-plugin}</version>
 				<configuration>
 					<warSourceDirectory>WebContent</warSourceDirectory>
 				</configuration>
@@ -41,13 +69,13 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.0.0-M5</version>
+				<version>${version.maven-surefire-plugin}</version>
 			</plugin>
 
 			<plugin>
 				<groupId>com.appslandia</groupId>
 				<artifactId>appslandia-jsp-processor</artifactId>
-				<version>1.7</version>
+				<version>${version.appslandia-jsp-processor}</version>
 				<executions>
 					<execution>
 						<id>process-jsp</id>
@@ -63,35 +91,6 @@
 				</executions>
 			</plugin>
 		</plugins>
-		<pluginManagement>
-			<plugins>
-				<!-- Eclipse m2e settings -->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>com.appslandia</groupId>
-										<artifactId>appslandia-jsp-processor</artifactId>
-										<versionRange>[1.7,)</versionRange>
-										<goals>
-											<goal>process-jsp</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 	</build>
 
 	<dependencies>
@@ -99,103 +98,75 @@
 		<dependency>
 			<groupId>com.appslandia</groupId>
 			<artifactId>appslandia-common</artifactId>
-			<version>8.0</version>
+			<version>${version.appslandia-common}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.appslandia</groupId>
 			<artifactId>appslandia-sweetsop</artifactId>
-			<version>3.3</version>
+			<version>${version.appslandia-sweetsop}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.appslandia</groupId>
-			<artifactId>appslandia-plum-javaee8</artifactId>
-			<version>6.3</version>
+			<artifactId>appslandia-plum</artifactId>
+			<version>${version.appslandia-plum}</version>
 		</dependency>
 
 		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-csv</artifactId>
-			<version>1.7</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.jsoup</groupId>
-			<artifactId>jsoup</artifactId>
-			<version>1.13.1</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-api</artifactId>
-			<version>2.13.3</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
-			<version>2.13.3</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-web</artifactId>
-			<version>2.12.0</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.ehcache</groupId>
-			<artifactId>ehcache</artifactId>
-			<version>3.8.1</version>
-		</dependency>
-
-		<dependency>
-			<groupId>javax</groupId>
-			<artifactId>javaee-api</artifactId>
-			<version>8.0</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.glassfish</groupId>
-			<artifactId>javax.json</artifactId>
-			<version>1.1.4</version>
+			<groupId>jakarta.platform</groupId>
+			<artifactId>jakarta.jakartaee-api</artifactId>
+			<version>${version.jakarta.platform}</version>
 			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.glassfish.web</groupId>
-			<artifactId>jstl-impl</artifactId>
-			<version>1.2</version>
+			<artifactId>jakarta.servlet.jsp.jstl</artifactId>
+			<version>${version.jakarta.jstl-impl}</version>
 			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-csv</artifactId>
+			<version>${version.commons-csv}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>${version.jsoup}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>${version.log4j-api}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${version.log4j-core}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-web</artifactId>
+			<version>${version.log4j-jakarta-web}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.ehcache</groupId>
+			<artifactId>ehcache</artifactId>
+			<version>${version.ehcache}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.7.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.jboss.weld</groupId>
-			<artifactId>weld-junit5</artifactId>
-			<version>2.0.1.Final</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<version>1.4.200</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>5.4.26.Final</version>
+			<version>${version.junit-jupiter-api}</version>
 			<scope>test</scope>
 		</dependency>
 

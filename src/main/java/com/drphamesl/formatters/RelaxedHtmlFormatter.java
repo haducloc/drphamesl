@@ -1,7 +1,7 @@
 package com.drphamesl.formatters;
 
 import org.jsoup.Jsoup;
-import org.jsoup.safety.Whitelist;
+import org.jsoup.safety.Safelist;
 
 import com.appslandia.common.base.FormatProvider;
 import com.appslandia.common.formatters.Formatter;
@@ -40,7 +40,7 @@ public class RelaxedHtmlFormatter implements Formatter {
 		}
 
 		// @formatter:off
-		str = Jsoup.clean(str, Whitelist.relaxed()
+		str = Jsoup.clean(str, Safelist.relaxed()
 				.addAttributes("a", "class", "target")
 				.addAttributes("p", "class")
 				.addAttributes("ol", "class")

@@ -1,20 +1,16 @@
 package com.drphamesl.admin.controllers;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.Statement;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
-import javax.validation.constraints.NotNull;
 
 import com.appslandia.common.base.Bind;
 import com.appslandia.common.base.Out;
 import com.appslandia.common.cdi.Json;
 import com.appslandia.common.cdi.Json.Profile;
-import com.appslandia.common.jdbc.JdbcUtils;
-import com.appslandia.common.jdbc.ResultSetImpl;
+import com.appslandia.common.jdbc.SqlAdminUtils;
 import com.appslandia.common.json.JsonProcessor;
 import com.appslandia.common.utils.ExceptionUtils;
 import com.appslandia.common.utils.FileNameUtils;
@@ -33,6 +29,11 @@ import com.appslandia.plum.results.JspResult;
 import com.appslandia.plum.results.RedirectResult;
 import com.appslandia.plum.results.TextFileResult;
 import com.drphamesl.utils.ResultUtils;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.constraints.NotNull;
 
 /**
  *
@@ -101,7 +102,7 @@ public class ManageSqlController {
 				}
 
 				// Query
-				try (ResultSetImpl rs = new ResultSetImpl(stat.executeQuery(model.getSqlText()))) {
+				try (ResultSet rs = stat.executeQuery(model.getSqlText())) {
 
 					Out<Integer> count = new Out<>();
 					String content = model.isJsonResult() ? ResultUtils.executeJson(rs, this.jsonProcessor, count) : ResultUtils.executeCSV(rs, count);
@@ -136,12 +137,13 @@ public class ManageSqlController {
 	}
 
 	@HttpGet
-	public ActionResult fixIdSeq(RequestAccessor request, @NotNull String tableName, @NotNull String idColumn, @Bind(defval = "false") boolean idInt,
-			String idPkSeq, String idNotNull, String idPk, String idSeq) throws Exception {
+	public ActionResult fixIdSeq(RequestAccessor request, @NotNull String tableName, @NotNull String idPkCol, @Bind(defval = "false") boolean idPkInt,
+			String idPkAlter1, String idPkAlter2, String idPkAlter3) throws Exception {
+
 		long latestSeq = 0;
 		try (Connection conn = ds.getConnection()) {
 
-			latestSeq = JdbcUtils.fixIdSeq(tableName, idColumn, idInt, idPkSeq, idNotNull, idPk, idSeq, conn);
+			latestSeq = SqlAdminUtils.fixIdSeq(tableName, idPkCol, idPkInt, idPkAlter1, idPkAlter2, idPkAlter3, conn);
 
 			request.getMessages().addNotice("Done fixIdSeq, latestSeq=" + latestSeq);
 			return new RedirectResult("index");

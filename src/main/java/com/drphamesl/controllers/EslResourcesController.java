@@ -1,9 +1,5 @@
 package com.drphamesl.controllers;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletResponse;
-
 import com.appslandia.common.base.Params;
 import com.appslandia.plum.base.ActionParser;
 import com.appslandia.plum.base.ActionResult;
@@ -15,6 +11,10 @@ import com.appslandia.plum.results.JspResult;
 import com.appslandia.plum.utils.ServletUtils;
 import com.drphamesl.models.EslResourcesModel;
 import com.drphamesl.services.EslResService;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *

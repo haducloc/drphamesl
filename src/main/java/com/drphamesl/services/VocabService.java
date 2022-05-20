@@ -8,12 +8,8 @@ import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.transaction.Transactional;
-
 import com.appslandia.common.base.Out;
-import com.appslandia.common.jpa.EntityManagerAccessor;
+import com.appslandia.common.jpa.EntityManagerImpl;
 import com.appslandia.common.utils.AssertUtils;
 import com.appslandia.common.utils.CollectionUtils;
 import com.appslandia.common.utils.ModelUtils;
@@ -29,6 +25,10 @@ import com.drphamesl.utils.PreTagUtils;
 import com.drphamesl.utils.TestOrders;
 import com.drphamesl.utils.VocabOrders;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
+
 /**
  *
  * @author <a href="mailto:haducloc13@gmail.com">Loc Ha</a>
@@ -38,7 +38,7 @@ import com.drphamesl.utils.VocabOrders;
 public class VocabService {
 
 	@Inject
-	protected EntityManagerAccessor em;
+	protected EntityManagerImpl em;
 
 	@Inject
 	protected VocabServiceUtil vocabServiceUtil;
@@ -88,22 +88,22 @@ public class VocabService {
 	}
 
 	public List<Vocab> queryByTag(String tag) {
-		return em.createNamedQuery("Vocab.queryByTag", Vocab.class).setLikeTag("wtag", tag).getResultList();
+		return em.createNamedQuery("Vocab.queryByTag", Vocab.class).setLike("wtag", TagUtils.wrapTag(tag)).getResultList();
 	}
 
 	public boolean checkTag(String tag) {
-		return em.createNamedQuery("Vocab.checkTag").setLikeTag("wtag", tag).getFirstOrNull() != null;
+		return em.createNamedQuery("Vocab.checkTag").setLike("wtag", TagUtils.wrapTag(tag)).getFirstOrNull() != null;
 	}
 
 	public List<Vocab> query(String query, int pageIndex, int pageSize, Out<Integer> recordCount) {
 		if (recordCount.value == null || recordCount.value <= 0) {
-			recordCount.value = em.createNamedQuery("Vocab.queryCount").setParameter("query", query).setLikeTag("wtag", query).setLikeStart("s_words", query)
-					.getCount();
+			recordCount.value = em.createNamedQuery("Vocab.queryCount").setParameter("query", query).setLike("wtag", TagUtils.wrapTag(query))
+					.setLikeSW("s_words", query).getSingleOrNull();
 		}
 
 		final int startPos = (pageIndex - 1) * pageSize;
 
-		return em.createNamedQuery("Vocab.query", Vocab.class).setParameter("query", query).setLikeTag("wtag", query).setLikeStart("s_words", query)
+		return em.createNamedQuery("Vocab.query", Vocab.class).setParameter("query", query).setLike("wtag", TagUtils.wrapTag(query)).setLikeSW("s_words", query)
 				.setStartPos(startPos).setMaxResults(pageSize).asReadonly().getResultList();
 	}
 

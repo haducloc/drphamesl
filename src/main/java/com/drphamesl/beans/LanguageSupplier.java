@@ -3,11 +3,11 @@ package com.drphamesl.beans;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.ApplicationScoped;
-
 import com.appslandia.common.base.Language;
 import com.appslandia.common.cdi.CDISupplier;
 import com.appslandia.common.cdi.Supplier;
+
+import jakarta.enterprise.context.ApplicationScoped;
 
 /**
  *

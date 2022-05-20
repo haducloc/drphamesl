@@ -1,9 +1,5 @@
 package com.drphamesl.admin.controllers;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletResponse;
-
 import com.appslandia.common.logging.AppLogger;
 import com.appslandia.common.utils.BitBool;
 import com.appslandia.plum.base.ActionResult;
@@ -19,6 +15,10 @@ import com.appslandia.plum.results.JspResult;
 import com.appslandia.plum.results.RedirectResult;
 import com.drphamesl.entities.Faq;
 import com.drphamesl.services.FaqService;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *

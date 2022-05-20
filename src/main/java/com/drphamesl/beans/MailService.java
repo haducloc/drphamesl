@@ -7,13 +7,6 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
-import javax.enterprise.concurrent.ManagedScheduledExecutorService;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.servlet.ServletContext;
-
 import com.appslandia.common.base.InitializeException;
 import com.appslandia.common.base.RateLimit;
 import com.appslandia.common.crypto.SecureProps;
@@ -29,6 +22,13 @@ import com.appslandia.plum.utils.ServletUtils;
 import com.drphamesl.entities.MailMsg;
 import com.drphamesl.services.MailMsgService;
 import com.drphamesl.utils.MailMsgs;
+
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.Resource;
+import jakarta.enterprise.concurrent.ManagedScheduledExecutorService;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.servlet.ServletContext;
 
 /**
  *

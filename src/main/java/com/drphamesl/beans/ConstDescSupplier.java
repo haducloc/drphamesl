@@ -3,12 +3,12 @@ package com.drphamesl.beans;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.ApplicationScoped;
-
 import com.appslandia.common.base.ConstDesc;
 import com.appslandia.common.cdi.CDISupplier;
 import com.appslandia.common.cdi.Supplier;
 import com.drphamesl.utils.ShareTypes;
+
+import jakarta.enterprise.context.ApplicationScoped;
 
 /**
  *

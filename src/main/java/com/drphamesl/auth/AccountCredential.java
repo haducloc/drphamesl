@@ -1,6 +1,6 @@
 package com.drphamesl.auth;
 
-import javax.security.enterprise.credential.UsernamePasswordCredential;
+import jakarta.security.enterprise.credential.UsernamePasswordCredential;
 
 /**
  *

@@ -2,15 +2,15 @@ package com.drphamesl.services;
 
 import java.util.List;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.Event;
-import javax.inject.Inject;
-import javax.transaction.Transactional;
-
-import com.appslandia.common.jpa.EntityManagerAccessor;
+import com.appslandia.common.jpa.EntityManagerImpl;
 import com.appslandia.common.utils.ModelUtils;
 import com.drphamesl.beans.ResourceChange;
 import com.drphamesl.entities.Resource;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.event.Event;
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 
 /**
  *
@@ -21,7 +21,7 @@ import com.drphamesl.entities.Resource;
 public class ResourceService {
 
 	@Inject
-	protected EntityManagerAccessor em;
+	protected EntityManagerImpl em;
 
 	@Inject
 	protected Event<ResourceChange> event;

@@ -4,17 +4,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Priority;
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Alternative;
-import javax.inject.Inject;
-import javax.interceptor.Interceptor;
-
 import com.appslandia.common.base.InitializeException;
 import com.appslandia.plum.base.Resources;
 import com.appslandia.plum.defaults.DefaultResourcesProvider;
 import com.drphamesl.entities.Resource;
 import com.drphamesl.services.ResourceService;
+
+import jakarta.annotation.Priority;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.inject.Alternative;
+import jakarta.inject.Inject;
+import jakarta.interceptor.Interceptor;
 
 /**
  *

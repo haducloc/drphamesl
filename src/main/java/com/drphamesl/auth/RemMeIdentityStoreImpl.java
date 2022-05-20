@@ -1,8 +1,5 @@
 package com.drphamesl.auth;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-
 import com.appslandia.common.base.Out;
 import com.appslandia.common.base.TextGenerator;
 import com.appslandia.common.base.TokenGenerator;
@@ -17,6 +14,9 @@ import com.appslandia.plum.base.PrincipalGroups;
 import com.appslandia.plum.base.RemMeIdentityStore;
 import com.drphamesl.admin.auth.AdminIdentityValidator;
 import com.drphamesl.utils.AccountUtils;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 
 /**
  *

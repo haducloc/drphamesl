@@ -8,15 +8,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.regex.Pattern;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.json.Json;
-import javax.json.JsonArray;
-import javax.json.JsonObject;
-import javax.json.JsonReader;
-import javax.json.JsonValue;
-import javax.json.JsonValue.ValueType;
-
 import com.appslandia.common.base.TextBuilder;
 import com.appslandia.common.logging.AppLogger;
 import com.appslandia.common.utils.AssertUtils;
@@ -27,6 +18,15 @@ import com.appslandia.sweetsop.http.HttpClient;
 import com.appslandia.sweetsop.readers.TextReader;
 import com.drphamesl.entities.Vocab;
 import com.drphamesl.utils.VocabUtils;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.json.Json;
+import jakarta.json.JsonArray;
+import jakarta.json.JsonObject;
+import jakarta.json.JsonReader;
+import jakarta.json.JsonValue;
+import jakarta.json.JsonValue.ValueType;
 
 /**
  *

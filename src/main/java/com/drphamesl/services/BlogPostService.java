@@ -6,12 +6,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.transaction.Transactional;
-
 import com.appslandia.common.base.Out;
-import com.appslandia.common.jpa.EntityManagerAccessor;
+import com.appslandia.common.jpa.EntityManagerImpl;
 import com.appslandia.common.utils.AssertUtils;
 import com.appslandia.common.utils.BitBool;
 import com.appslandia.common.utils.CollectionUtils;
@@ -22,6 +18,10 @@ import com.appslandia.plum.caching.CacheResult;
 import com.drphamesl.caching.Caches;
 import com.drphamesl.entities.BlogPost;
 import com.drphamesl.utils.TimeUtils;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 
 /**
  *
@@ -35,7 +35,7 @@ public class BlogPostService {
 	static final String CACHE_KEY_BLOG_POSTS = "blog-posts";
 
 	@Inject
-	protected EntityManagerAccessor em;
+	protected EntityManagerImpl em;
 
 	@Inject
 	protected CacheChangeEvent cacheChangeEvent;
@@ -79,20 +79,20 @@ public class BlogPostService {
 
 	public List<BlogPost> query(String tag, int pageIndex, int pageSize, Out<Integer> recordCount) {
 		if (recordCount.value == null || recordCount.value <= 0) {
-			recordCount.value = em.createNamedQuery("BlogPost.queryCount").setParameter("active", 0).setParameter("tag", tag).setLikeTag("wtag", tag)
-					.getCount();
+			recordCount.value = em.createNamedQuery("BlogPost.queryCount").setParameter("active", 0).setParameter("tag", tag)
+					.setLike("wtag", TagUtils.wrapTag(tag)).getSingleOrNull();
 		}
 
 		final int startPos = (pageIndex - 1) * pageSize;
 
-		return em.createNamedQuery("BlogPost.query", BlogPost.class).setParameter("active", 0).setParameter("tag", tag).setLikeTag("wtag", tag)
+		return em.createNamedQuery("BlogPost.query", BlogPost.class).setParameter("active", 0).setParameter("tag", tag).setLike("wtag", TagUtils.wrapTag(tag))
 				.setStartPos(startPos).setMaxResults(pageSize).asReadonly().getResultList();
 	}
 
 	@CacheResult(cacheName = Caches.DEFAULT, key = CACHE_KEY_BLOG_POSTS)
 	public List<BlogPost> getBlogPosts() {
-		List<BlogPost> list = em.createNamedQuery("BlogPost.query", BlogPost.class).setParameter("active", 1).setParameter("tag", null).setLikeTag("wtag", null)
-				.asReadonly().getResultList();
+		List<BlogPost> list = em.createNamedQuery("BlogPost.query", BlogPost.class).setParameter("active", 1).setParameter("tag", null)
+				.setLike("wtag", TagUtils.wrapTag(null)).asReadonly().getResultList();
 		return Collections.unmodifiableList(list);
 	}
 

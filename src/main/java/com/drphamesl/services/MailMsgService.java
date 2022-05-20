@@ -2,15 +2,15 @@ package com.drphamesl.services;
 
 import java.util.List;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.transaction.Transactional;
-import javax.transaction.UserTransaction;
-
-import com.appslandia.common.jpa.EntityManagerAccessor;
-import com.appslandia.common.jpa.EntityManagerFactoryAccessor;
+import com.appslandia.common.jpa.EntityManagerFactoryImpl;
+import com.appslandia.common.jpa.EntityManagerImpl;
 import com.appslandia.common.logging.AppLogger;
 import com.drphamesl.entities.MailMsg;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
+import jakarta.transaction.UserTransaction;
 
 /**
  *
@@ -24,13 +24,13 @@ public class MailMsgService {
 	protected AppLogger logger;
 
 	@Inject
-	protected EntityManagerAccessor em;
+	protected EntityManagerImpl em;
 
 	@Inject
 	protected UserTransaction tx;
 
 	@Inject
-	protected EntityManagerFactoryAccessor emf;
+	protected EntityManagerFactoryImpl emf;
 
 	@Transactional
 	public void add(MailMsg obj) throws Exception {
@@ -38,11 +38,11 @@ public class MailMsgService {
 	}
 
 	public int countSent(int mailerId, long fromTime) throws Exception {
-		EntityManagerAccessor em = null;
+		EntityManagerImpl em = null;
 		try {
 			em = emf.createEntityManager();
 
-			return em.createNamedQuery("MailMsg.countSent").setParameter("mailerId", mailerId).setParameter("fromTime", fromTime).getCount();
+			return em.createNamedQuery("MailMsg.countSent").setParameter("mailerId", mailerId).setParameter("fromTime", fromTime).getSingleOrNull();
 
 		} finally {
 			if (em != null) {
@@ -52,7 +52,7 @@ public class MailMsgService {
 	}
 
 	public List<MailMsg> queryUnsent(int mailerId, int maxResults) throws Exception {
-		EntityManagerAccessor em = null;
+		EntityManagerImpl em = null;
 		try {
 			em = emf.createEntityManager();
 
@@ -67,7 +67,7 @@ public class MailMsgService {
 	}
 
 	public void markSent(List<MailMsg> msgs) throws Exception {
-		EntityManagerAccessor em = null;
+		EntityManagerImpl em = null;
 		try {
 			em = emf.createEntityManager();
 			tx.begin();

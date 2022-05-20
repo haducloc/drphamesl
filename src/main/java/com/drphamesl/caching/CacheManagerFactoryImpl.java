@@ -3,16 +3,16 @@ package com.drphamesl.caching;
 import java.time.Duration;
 import java.util.List;
 
-import javax.annotation.Priority;
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Alternative;
-import javax.enterprise.inject.Disposes;
-import javax.enterprise.inject.Produces;
-import javax.interceptor.Interceptor;
-
 import com.appslandia.common.base.FluentList;
 import com.appslandia.common.caching.AppCacheManager;
 import com.appslandia.common.cdi.CDIFactory;
+
+import jakarta.annotation.Priority;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.inject.Alternative;
+import jakarta.enterprise.inject.Disposes;
+import jakarta.enterprise.inject.Produces;
+import jakarta.interceptor.Interceptor;
 
 /**
  *

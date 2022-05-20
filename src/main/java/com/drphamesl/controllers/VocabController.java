@@ -4,10 +4,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletResponse;
-
 import com.appslandia.common.base.Out;
 import com.appslandia.common.utils.ObjectUtils;
 import com.appslandia.common.utils.ParseUtils;
@@ -36,6 +32,10 @@ import com.drphamesl.utils.NextTypes;
 import com.drphamesl.utils.ShareTypes;
 import com.drphamesl.utils.TestOrders;
 import com.drphamesl.utils.VocabOrders;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -148,7 +148,7 @@ public class VocabController {
 		}
 
 		// Save cookies
-		if (!ObjectUtils.equals_str(request.getPref("flashcard.vocabOrder"), model.getVocabOrder())
+		if (!ObjectUtils.strEquals(request.getPref("flashcard.vocabOrder"), model.getVocabOrder())
 				|| !Objects.equals(request.getPref("flashcard.nextType"), model.getNextType())) {
 
 			prefCookieHandler.savePrefCookie(request, response, pc -> {
@@ -212,7 +212,7 @@ public class VocabController {
 		}
 
 		// Save cookies
-		if (!ObjectUtils.equals_str(request.getPref("vocabTest.testOrder"), model.getTestOrder())
+		if (!ObjectUtils.strEquals(request.getPref("vocabTest.testOrder"), model.getTestOrder())
 				|| !Objects.equals(request.getPref("vocabTest.nextType"), model.getNextType())) {
 
 			prefCookieHandler.savePrefCookie(request, response, pc -> {

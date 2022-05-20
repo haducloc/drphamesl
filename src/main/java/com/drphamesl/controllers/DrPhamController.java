@@ -1,9 +1,5 @@
 package com.drphamesl.controllers;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletResponse;
-
 import com.appslandia.common.logging.AppLogger;
 import com.appslandia.common.utils.BitBool;
 import com.appslandia.common.utils.EmailUtils;
@@ -23,6 +19,10 @@ import com.drphamesl.services.MailMsgService;
 import com.drphamesl.utils.AppUtils;
 import com.drphamesl.utils.MailMsgs;
 import com.drphamesl.utils.Services;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *

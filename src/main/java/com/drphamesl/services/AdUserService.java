@@ -1,13 +1,13 @@
 package com.drphamesl.services;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.transaction.Transactional;
-
-import com.appslandia.common.jpa.EntityManagerAccessor;
+import com.appslandia.common.jpa.EntityManagerImpl;
 import com.appslandia.common.utils.AssertUtils;
 import com.drphamesl.entities.AdUser;
 import com.drphamesl.utils.AccountUtils;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 
 /**
  *
@@ -18,7 +18,7 @@ import com.drphamesl.utils.AccountUtils;
 public class AdUserService {
 
 	@Inject
-	protected EntityManagerAccessor em;
+	protected EntityManagerImpl em;
 
 	public AdUser findByPk(int userId) throws Exception {
 		return em.find(AdUser.class, userId);

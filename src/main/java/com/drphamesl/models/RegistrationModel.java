@@ -1,12 +1,12 @@
 package com.drphamesl.models;
 
-import javax.validation.constraints.NotNull;
-
 import com.appslandia.common.base.Bind;
 import com.appslandia.common.formatters.Formatter;
 import com.appslandia.common.validators.Email;
 import com.appslandia.common.validators.MaxLength;
 import com.appslandia.common.validators.Password;
+
+import jakarta.validation.constraints.NotNull;
 
 /**
  *

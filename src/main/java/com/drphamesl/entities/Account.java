@@ -3,20 +3,20 @@ package com.drphamesl.entities;
 import java.io.Serializable;
 import java.time.OffsetDateTime;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
-import javax.validation.constraints.NotNull;
-
 import com.appslandia.common.jpa.EntityBase;
 import com.appslandia.common.utils.StringFormat;
 import com.appslandia.common.validators.Email;
 import com.appslandia.common.validators.MaxLength;
 import com.appslandia.common.validators.ValidInts;
 import com.drphamesl.utils.AccountUtils;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.NamedQuery;
+import jakarta.validation.constraints.NotNull;
 
 /**
  *

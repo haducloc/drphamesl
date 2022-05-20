@@ -4,10 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletResponse;
-
 import com.appslandia.common.base.Params;
 import com.appslandia.common.logging.AppLogger;
 import com.appslandia.common.utils.BitBool;
@@ -42,6 +38,10 @@ import com.drphamesl.utils.MailMsgs;
 import com.drphamesl.utils.NewsTypes;
 import com.drphamesl.utils.Services;
 import com.drphamesl.utils.TimeUtils;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *

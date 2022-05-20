@@ -1,8 +1,5 @@
 package com.drphamesl.admin.auth;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-
 import com.appslandia.common.base.Out;
 import com.appslandia.common.utils.ExceptionUtils;
 import com.appslandia.plum.base.AuthFailureResult;
@@ -10,6 +7,9 @@ import com.appslandia.plum.base.IdentityValidator;
 import com.appslandia.plum.base.PrincipalGroups;
 import com.drphamesl.entities.AdUser;
 import com.drphamesl.services.AdUserService;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 
 /**
  *

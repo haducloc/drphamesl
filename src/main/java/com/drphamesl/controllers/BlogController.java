@@ -3,10 +3,6 @@ package com.drphamesl.controllers;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletResponse;
-
 import com.appslandia.common.utils.TagUtils;
 import com.appslandia.common.utils.ValueUtils;
 import com.appslandia.plum.base.ActionResult;
@@ -22,6 +18,10 @@ import com.appslandia.plum.results.RedirectResult;
 import com.drphamesl.entities.BlogPost;
 import com.drphamesl.models.BlogSearchModel;
 import com.drphamesl.services.BlogPostService;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *

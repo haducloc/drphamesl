@@ -3,11 +3,11 @@ package com.drphamesl.formatters;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.enterprise.context.ApplicationScoped;
-
 import com.appslandia.common.cdi.CDISupplier;
 import com.appslandia.common.cdi.Supplier;
 import com.appslandia.common.formatters.Formatter;
+
+import jakarta.enterprise.context.ApplicationScoped;
 
 /**
  *

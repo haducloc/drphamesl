@@ -2,10 +2,6 @@ package com.drphamesl.controllers;
 
 import java.util.concurrent.TimeUnit;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletResponse;
-
 import com.appslandia.common.base.Out;
 import com.appslandia.common.base.Params;
 import com.appslandia.common.logging.AppLogger;
@@ -35,6 +31,10 @@ import com.drphamesl.services.SignupService;
 import com.drphamesl.utils.AppUtils;
 import com.drphamesl.utils.MailMsgs;
 import com.drphamesl.utils.Services;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *

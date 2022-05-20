@@ -1,10 +1,10 @@
 package com.drphamesl.models;
 
-import javax.validation.constraints.NotNull;
-
 import com.appslandia.common.base.Bind;
 import com.appslandia.common.base.NotBind;
 import com.appslandia.common.formatters.Formatter;
+
+import jakarta.validation.constraints.NotNull;
 
 /**
  *

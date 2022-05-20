@@ -4,12 +4,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.transaction.Transactional;
-
 import com.appslandia.common.base.Out;
-import com.appslandia.common.jpa.EntityManagerAccessor;
+import com.appslandia.common.jpa.EntityManagerImpl;
 import com.appslandia.common.utils.AssertUtils;
 import com.appslandia.common.utils.BitBool;
 import com.appslandia.common.utils.ModelUtils;
@@ -18,6 +14,10 @@ import com.appslandia.plum.caching.CacheResult;
 import com.drphamesl.caching.Caches;
 import com.drphamesl.entities.VocabList;
 import com.drphamesl.utils.TimeUtils;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 
 /**
  *
@@ -30,7 +30,7 @@ public class VocabListService {
 	static final String CACHE_KEY_VOCABLISTS = "vocablists";
 
 	@Inject
-	protected EntityManagerAccessor em;
+	protected EntityManagerImpl em;
 
 	@Inject
 	protected CacheChangeEvent cacheChangeEvent;
@@ -71,7 +71,7 @@ public class VocabListService {
 
 	public List<VocabList> query(Integer shareType, String tag, int pageIndex, int pageSize, Out<Integer> recordCount) {
 		if (recordCount.value == null || recordCount.value <= 0) {
-			recordCount.value = em.createNamedQuery("VocabList.queryCount").setParameter("shareType", shareType).setParameter("tag", tag).getCount();
+			recordCount.value = em.createNamedQuery("VocabList.queryCount").setParameter("shareType", shareType).setParameter("tag", tag).getSingleOrNull();
 		}
 
 		final int startPos = (pageIndex - 1) * pageSize;

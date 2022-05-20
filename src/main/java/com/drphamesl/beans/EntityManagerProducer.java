@@ -1,14 +1,14 @@
 package com.drphamesl.beans;
 
-import javax.enterprise.context.Dependent;
-import javax.enterprise.inject.Produces;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
-import com.appslandia.common.jpa.EntityManagerAccessor;
+import com.appslandia.common.jpa.EntityManagerImpl;
 import com.appslandia.common.jpa.HintMapper;
 import com.appslandia.common.jpa.JpaHints;
 import com.drphamesl.utils.DBUtils;
+
+import jakarta.enterprise.context.Dependent;
+import jakarta.enterprise.inject.Produces;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 /**
  *
@@ -34,7 +34,7 @@ public class EntityManagerProducer {
 	private EntityManager em;
 
 	@Produces
-	public EntityManagerAccessor produce() {
-		return new EntityManagerAccessor(this.em);
+	public EntityManagerImpl produce() {
+		return new EntityManagerImpl(this.em);
 	}
 }

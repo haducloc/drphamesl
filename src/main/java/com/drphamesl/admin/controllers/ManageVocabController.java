@@ -7,10 +7,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.function.Supplier;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 
@@ -52,6 +48,10 @@ import com.drphamesl.services.VocabLoader;
 import com.drphamesl.services.VocabService;
 import com.drphamesl.utils.PreTagUtils;
 import com.drphamesl.utils.TimeUtils;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -235,7 +235,7 @@ public class ManageVocabController {
 		final String[] columnLabels = new String[] { "vocab", "definitions", "tags" };
 
 		// CSV
-		CSVFormat format = CSVFormat.EXCEL.withHeader(columnLabels);
+		CSVFormat format = CSVFormat.EXCEL.builder().setHeader(columnLabels).build();
 		MemoryStream ms = new MemoryStream();
 
 		try (Writer out = new BufferedWriter(new OutputStreamWriter(ms, StandardCharsets.UTF_8))) {

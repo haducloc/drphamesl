@@ -1,12 +1,12 @@
 package com.drphamesl.beans;
 
-import javax.enterprise.context.Dependent;
-import javax.enterprise.inject.Produces;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceUnit;
-
-import com.appslandia.common.jpa.EntityManagerFactoryAccessor;
+import com.appslandia.common.jpa.EntityManagerFactoryImpl;
 import com.drphamesl.utils.DBUtils;
+
+import jakarta.enterprise.context.Dependent;
+import jakarta.enterprise.inject.Produces;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.PersistenceUnit;
 
 /**
  *
@@ -20,7 +20,7 @@ public class EntityManagerFactoryProducer {
 	private EntityManagerFactory emf;
 
 	@Produces
-	public EntityManagerFactoryAccessor produce() {
-		return new EntityManagerFactoryAccessor(this.emf);
+	public EntityManagerFactoryImpl produce() {
+		return new EntityManagerFactoryImpl(this.emf);
 	}
 }

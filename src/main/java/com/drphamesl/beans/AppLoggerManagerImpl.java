@@ -1,15 +1,15 @@
 package com.drphamesl.beans;
 
-import javax.annotation.Priority;
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Alternative;
-import javax.enterprise.inject.Disposes;
-import javax.enterprise.inject.Produces;
-import javax.interceptor.Interceptor;
-
 import com.appslandia.common.cdi.CDIFactory;
 import com.appslandia.common.logging.AppLoggerManager;
 import com.appslandia.common.logging.Log4JAppLoggerManager;
+
+import jakarta.annotation.Priority;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.inject.Alternative;
+import jakarta.enterprise.inject.Disposes;
+import jakarta.enterprise.inject.Produces;
+import jakarta.interceptor.Interceptor;
 
 /**
  *
