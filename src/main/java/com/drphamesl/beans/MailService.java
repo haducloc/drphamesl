@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicReference;
 
 import com.appslandia.common.base.InitializeException;
 import com.appslandia.common.base.RateLimit;
@@ -63,9 +62,6 @@ public class MailService {
 
 	final Map<Integer, SmtpMailer> mailers = new HashMap<>();
 
-	// ERROR Log
-	protected AtomicReference<String> lastErrorMsg = new AtomicReference<>();
-
 	@PostConstruct
 	protected void initialize() {
 		logger.info("Initializing MailService...");
@@ -101,7 +97,7 @@ public class MailService {
 					logException(ex);
 				}
 			}
-		}, 120_000, mailerInterval1, TimeUnit.MILLISECONDS);
+		}, 90000, mailerInterval1, TimeUnit.MILLISECONDS);
 
 		// Mailer 2
 		executorService.scheduleAtFixedRate(new Runnable() {
@@ -116,20 +112,17 @@ public class MailService {
 					logException(ex);
 				}
 			}
-		}, 120_000, mailerInterval2, TimeUnit.MILLISECONDS);
+		}, 90000, mailerInterval2, TimeUnit.MILLISECONDS);
 
 		logger.info("Finished initializing MailService.");
 	}
 
 	void logException(Exception ex) {
-		String lastError = lastErrorMsg.get();
-		String curError = ExceptionUtils.buildMessage(ex);
+		String errorMessage = ExceptionUtils.buildMessage(ex);
 
-		if (curError.equals(lastError)) {
-			logger.error(curError);
-
+		if (errorMessage.contains("https://support.google.com/mail/?p=BadCredentials")) {
+			logger.error(errorMessage);
 		} else {
-			lastErrorMsg.set(curError);
 			logger.error(ex);
 		}
 	}
