@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 import com.appslandia.common.base.InitializeException;
@@ -23,6 +24,7 @@ import com.drphamesl.services.MailMsgService;
 import com.drphamesl.utils.MailMsgs;
 
 import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import jakarta.annotation.Resource;
 import jakarta.enterprise.concurrent.ManagedScheduledExecutorService;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -62,6 +64,8 @@ public class MailService {
 
 	final Map<Integer, SmtpMailer> mailers = new HashMap<>();
 
+	final List<ScheduledFuture<?>> scheduledTasks = new ArrayList<>();
+
 	@PostConstruct
 	protected void initialize() {
 		logger.info("Initializing MailService...");
@@ -85,7 +89,7 @@ public class MailService {
 		CollectionUtils.toMap(this.mailers, MailMsgs.MAILER_1, mailer1, MailMsgs.MAILER_2, mailer2);
 
 		// Mailer 1
-		executorService.scheduleAtFixedRate(new Runnable() {
+		scheduledTasks.add(executorService.scheduleAtFixedRate(new Runnable() {
 
 			@Override
 			public void run() {
@@ -97,10 +101,10 @@ public class MailService {
 					logException(ex);
 				}
 			}
-		}, 90000, mailerInterval1, TimeUnit.MILLISECONDS);
+		}, 90000, mailerInterval1, TimeUnit.MILLISECONDS));
 
 		// Mailer 2
-		executorService.scheduleAtFixedRate(new Runnable() {
+		scheduledTasks.add(executorService.scheduleAtFixedRate(new Runnable() {
 
 			@Override
 			public void run() {
@@ -112,7 +116,7 @@ public class MailService {
 					logException(ex);
 				}
 			}
-		}, 90000, mailerInterval2, TimeUnit.MILLISECONDS);
+		}, 90000, mailerInterval2, TimeUnit.MILLISECONDS));
 
 		logger.info("Finished initializing MailService.");
 	}
@@ -161,6 +165,13 @@ public class MailService {
 			logger.error(ex);
 
 			throw new InitializeException(ex);
+		}
+	}
+
+	@PreDestroy
+	public void dispose() {
+		for (ScheduledFuture<?> scheduledTask : scheduledTasks) {
+			scheduledTask.cancel(true);
 		}
 	}
 }
