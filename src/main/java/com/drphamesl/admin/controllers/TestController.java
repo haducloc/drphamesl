@@ -4,6 +4,7 @@ import java.time.OffsetDateTime;
 
 import com.appslandia.plum.base.Controller;
 import com.appslandia.plum.base.EnableAsync;
+import com.appslandia.plum.base.HttpGet;
 import com.appslandia.plum.base.Modules;
 import com.drphamesl.entities.Account;
 
@@ -19,6 +20,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 public class TestController {
 
 	@EnableAsync
+	@HttpGet
 	public Account index() {
 		Account acc = new Account();
 		acc.setAccountId(1);
