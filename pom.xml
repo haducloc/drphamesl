@@ -25,7 +25,7 @@
 		<version.maven-surefire-plugin>3.0.0-M6</version.maven-surefire-plugin>
 
 		<version.appslandia-common>10.7.0</version.appslandia-common>
-		<version.appslandia-plum>9.3.2</version.appslandia-plum>
+		<version.appslandia-plum>9.3.3</version.appslandia-plum>
 		<version.appslandia-sweetsop>3.3</version.appslandia-sweetsop>
 		<version.appslandia-jsp-processor>1.7</version.appslandia-jsp-processor>
 
