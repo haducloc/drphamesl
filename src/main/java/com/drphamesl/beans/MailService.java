@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+import com.appslandia.common.base.DeployEnv;
 import com.appslandia.common.base.InitializeException;
 import com.appslandia.common.base.RateLimit;
 import com.appslandia.common.crypto.SecureProps;
@@ -133,6 +134,8 @@ public class MailService {
 
 	void sendEmails(int mailerId) throws Exception {
 		if (appConfig.getBool("app.disable_mail_service", false)) {
+
+			logger.info("app.disable_mail_service=true, env={}", DeployEnv.getCurrent().getName());
 			return;
 		}
 
