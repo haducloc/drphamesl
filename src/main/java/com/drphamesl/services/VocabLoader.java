@@ -45,7 +45,7 @@ public class VocabLoader {
 	protected AppLogger logger;
 
 	private String getLookupUrl(String words) {
-		return DICT_API_URI_BASE + URLEncoding.encodePath(words) + "?key=" + this.appConfig.getRequiredString("dict_api_key");
+		return DICT_API_URI_BASE + URLEncoding.encodePath(words) + "?key=" + this.appConfig.getRequiredString("app.dict_api_key");
 	}
 
 	public boolean load(Vocab vocab) {

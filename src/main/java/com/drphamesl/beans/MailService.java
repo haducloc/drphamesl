@@ -132,6 +132,10 @@ public class MailService {
 	}
 
 	void sendEmails(int mailerId) throws Exception {
+		if (appConfig.getBool("app.disable_mail_service", false)) {
+			return;
+		}
+
 		final long lastMs = System.currentTimeMillis() - mailerRateLimit.getWindowMs();
 		int recentSends = mailMsgService.countSent(mailerId, lastMs);
 
