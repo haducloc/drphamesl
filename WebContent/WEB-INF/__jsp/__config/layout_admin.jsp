@@ -105,7 +105,7 @@
         </div>
       </div>
     </div>
-    <c:if test="${empty requestScope['javax.servlet.error.servlet_name'] and not empty messages}">
+    <c:if test="${empty requestScope['jakarta.servlet.error.servlet_name'] and not empty messages}">
       <div class="container mb-4">
         <div class="messages-wrapper">
           <t:messages clazz="mb-0 px-4 py-2 rounded" />
