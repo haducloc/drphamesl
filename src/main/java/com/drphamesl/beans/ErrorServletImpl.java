@@ -1,15 +1,11 @@
 package com.drphamesl.beans;
 
-import java.io.IOException;
-
 import com.appslandia.plum.base.ErrorServlet;
 import com.appslandia.plum.base.Modules;
 import com.appslandia.plum.base.RequestContext;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -29,10 +25,5 @@ public class ErrorServletImpl extends ErrorServlet {
 		}
 
 		return "/error.jsp";
-	}
-
-	@Override
-	protected void writeErrorDev(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		writeErrorProd(request, response);
 	}
 }
