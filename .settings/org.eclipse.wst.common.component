@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-                                           
+                                               
+    
     
     
     
@@ -10,7 +11,8 @@
     
     
     <wb-module deploy-name="drphamesl">
-                                                                                      
+                                                                                              
+        
         
         
         
@@ -21,7 +23,8 @@
         
         
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
-                                                                                      
+                                                                                              
+        
         
         
         
@@ -32,7 +35,8 @@
         
         
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
-                                                                                      
+                                                                                              
+        
         
         
         
@@ -43,7 +47,8 @@
         
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-                                                                                      
+                                                                                              
+        
         
         
         
@@ -57,10 +62,11 @@
         <dependent-module archiveName="appslandia-common-10.7.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/appslandia-common/appslandia-common">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="appslandia-plum-9.5.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/appslandia-plum/appslandia-plum">
+        <dependent-module archiveName="appslandia-plum-9.5.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/appslandia-plum/appslandia-plum">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-                                                                                      
+                                                                                              
+        
         
         
         
@@ -71,7 +77,8 @@
         
         
         <property name="java-output-path" value="/MyVocab/build/classes"/>
-                                                                        
+                                                                                
+        
         
         
         
@@ -80,7 +87,8 @@
         
         
         <property name="context-root" value="drphamesl"/>
-                                                                                   
+                                                                                           
+    
     
     
     
@@ -91,7 +99,8 @@
     
     
     </wb-module>
-                                        
+                                            
+
 
 
 
