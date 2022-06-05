@@ -13,7 +13,6 @@ import org.apache.commons.csv.CSVPrinter;
 import com.appslandia.common.base.Bind;
 import com.appslandia.common.base.MemoryStream;
 import com.appslandia.common.formatters.Formatter;
-import com.appslandia.common.formatters.FormatterException;
 import com.appslandia.common.logging.AppLogger;
 import com.appslandia.common.utils.FileNameUtils;
 import com.appslandia.common.utils.MimeTypes;
@@ -139,10 +138,7 @@ public class ManageVocabController {
 
 		// Parse vocabId
 		if (model.getVocabId() == null && request.getModelState().isValid("vocabId")) {
-			try {
-				model.setVocabId(request.findParam("vocabId", Integer.class));
-			} catch (FormatterException ex) {
-			}
+			model.setVocabId(request.paramOrNull("vocabId", Integer.class));
 		}
 
 		request.getModelState().remove("timeCreated");
