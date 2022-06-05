@@ -138,7 +138,8 @@ public class ManageVocabController {
 
 		// Parse vocabId
 		if (model.getVocabId() == null && request.getModelState().isValid("vocabId")) {
-			model.setVocabId(request.paramOrNull("vocabId", Integer.class));
+			String vid = request.findParam("vocabId");
+			model.setVocabId(request.getRequestContext().parseOrNull(vid, Integer.class));
 		}
 
 		request.getModelState().remove("timeCreated");
