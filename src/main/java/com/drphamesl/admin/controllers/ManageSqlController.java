@@ -119,10 +119,11 @@ public class ManageSqlController {
 					}
 
 					// FILE
+
 					if (model.isJsonResult()) {
-						return new TextFileResult(content, FileNameUtils.insertNow("query.json"), MimeTypes.APP_JSON);
+						return new TextFileResult(content, FileNameUtils.toFileNameNow("query.json"), MimeTypes.APP_JSON);
 					} else {
-						return new TextFileResult(content, FileNameUtils.insertNow("query.csv"), MimeTypes.APP_CSV);
+						return new TextFileResult(content, FileNameUtils.toFileNameNow("query.csv"), MimeTypes.APP_CSV);
 					}
 				}
 			}

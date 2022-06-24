@@ -247,6 +247,6 @@ public class ManageVocabController {
 		String content = ms.toString(StandardCharsets.UTF_8);
 		String fileName = StringFormat.fmt("export-vocabs-{}.csv", tag);
 
-		return new TextFileResult(content, FileNameUtils.insertNow(fileName), MimeTypes.APP_CSV);
+		return new TextFileResult(content, FileNameUtils.toFileNameNow(fileName), MimeTypes.APP_CSV);
 	}
 }
