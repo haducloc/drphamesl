@@ -47,7 +47,7 @@ function initCountDown(seconds, cdSpan, cdHandler) {
 }
 
 function __on_enter(event, enterFn) {
-	if (event.keyCode == 13) {
+	if (event.key == 'Enter') {
 		enterFn();
 		return false;
 	}
@@ -55,7 +55,7 @@ function __on_enter(event, enterFn) {
 }
 
 function __click_btn_on_enter(event, btn) {
-	if (event.keyCode == 13) {
+	if (event.key == 'Enter') {
 		document.getElementById(btn).click()
 		return false;
 	}
