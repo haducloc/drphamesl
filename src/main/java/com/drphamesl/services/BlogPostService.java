@@ -80,13 +80,13 @@ public class BlogPostService {
 	public List<BlogPost> query(String tag, int pageIndex, int pageSize, Out<Integer> recordCount) {
 		if (recordCount.value == null || recordCount.value <= 0) {
 			recordCount.value = em.createNamedQuery("BlogPost.queryCount").setParameter("active", 0).setParameter("tag", tag)
-					.setLike("wtag", TagUtils.wrapTag(tag)).getCount();
+					.setLike("wtag", TagUtils.wrapTag(tag)).getIntResult();
 		}
 
 		final int startPos = (pageIndex - 1) * pageSize;
 
 		return em.createNamedQuery("BlogPost.query", BlogPost.class).setParameter("active", 0).setParameter("tag", tag).setLike("wtag", TagUtils.wrapTag(tag))
-				.setStartPos(startPos).setMaxResults(pageSize).asReadonly().getResultList();
+				.setFirstResult(startPos).setMaxResults(pageSize).asReadonly().getResultList();
 	}
 
 	@CacheResult(cacheName = Caches.DEFAULT, key = CACHE_KEY_BLOG_POSTS)

@@ -144,7 +144,7 @@ public class ManageSqlController {
 		long latestSeq = 0;
 		try (Connection conn = ds.getConnection()) {
 
-			latestSeq = SqlAdminUtils.fixIdSeq(tableName, idPkCol, idPkInt, idPkAlter1, idPkAlter2, idPkAlter3, conn);
+			latestSeq = SqlAdminUtils.fixIdSeq(conn, tableName, idPkCol, idPkInt, idPkAlter1, idPkAlter2, idPkAlter3);
 
 			request.getMessages().addNotice("Done fixIdSeq, latestSeq=" + latestSeq);
 			return new RedirectResult("index");

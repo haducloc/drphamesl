@@ -71,12 +71,12 @@ public class VocabListService {
 
 	public List<VocabList> query(Integer shareType, String tag, int pageIndex, int pageSize, Out<Integer> recordCount) {
 		if (recordCount.value == null || recordCount.value <= 0) {
-			recordCount.value = em.createNamedQuery("VocabList.queryCount").setParameter("shareType", shareType).setParameter("tag", tag).getCount();
+			recordCount.value = em.createNamedQuery("VocabList.queryCount").setParameter("shareType", shareType).setParameter("tag", tag).getIntResult();
 		}
 
 		final int startPos = (pageIndex - 1) * pageSize;
 
-		return em.createNamedQuery("VocabList.query", VocabList.class).setParameter("shareType", shareType).setParameter("tag", tag).setStartPos(startPos)
+		return em.createNamedQuery("VocabList.query", VocabList.class).setParameter("shareType", shareType).setParameter("tag", tag).setFirstResult(startPos)
 				.setMaxResults(pageSize).asReadonly().getResultList();
 	}
 

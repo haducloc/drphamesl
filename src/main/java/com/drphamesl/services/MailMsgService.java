@@ -42,7 +42,7 @@ public class MailMsgService {
 		try {
 			em = emf.createEntityManager();
 
-			return em.createNamedQuery("MailMsg.countSent").setParameter("mailerId", mailerId).setParameter("fromTime", fromTime).getCount();
+			return em.createNamedQuery("MailMsg.countSent").setParameter("mailerId", mailerId).setParameter("fromTime", fromTime).getIntResult();
 
 		} finally {
 			if (em != null) {
@@ -56,7 +56,7 @@ public class MailMsgService {
 		try {
 			em = emf.createEntityManager();
 
-			return em.createNamedQuery("MailMsg.queryUnsent", MailMsg.class).setParameter("mailerId", mailerId).setStartPos(0).setMaxResults(maxResults)
+			return em.createNamedQuery("MailMsg.queryUnsent", MailMsg.class).setParameter("mailerId", mailerId).setFirstResult(0).setMaxResults(maxResults)
 					.asReadonly().getResultList();
 
 		} finally {

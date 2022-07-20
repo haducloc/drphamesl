@@ -98,13 +98,13 @@ public class VocabService {
 	public List<Vocab> query(String query, int pageIndex, int pageSize, Out<Integer> recordCount) {
 		if (recordCount.value == null || recordCount.value <= 0) {
 			recordCount.value = em.createNamedQuery("Vocab.queryCount").setParameter("query", query).setLike("wtag", TagUtils.wrapTag(query))
-					.setLikeSW("s_words", query).getCount();
+					.setLikeSW("s_words", query).getIntResult();
 		}
 
 		final int startPos = (pageIndex - 1) * pageSize;
 
 		return em.createNamedQuery("Vocab.query", Vocab.class).setParameter("query", query).setLike("wtag", TagUtils.wrapTag(query)).setLikeSW("s_words", query)
-				.setStartPos(startPos).setMaxResults(pageSize).asReadonly().getResultList();
+				.setFirstResult(startPos).setMaxResults(pageSize).asReadonly().getResultList();
 	}
 
 	public void generateCard(String tag, FlashcardModel model) throws Exception {
