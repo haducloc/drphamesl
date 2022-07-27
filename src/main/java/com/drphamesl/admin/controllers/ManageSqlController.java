@@ -1,7 +1,6 @@
 package com.drphamesl.admin.controllers;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.Statement;
 
 import javax.sql.DataSource;
@@ -10,6 +9,7 @@ import com.appslandia.common.base.Bind;
 import com.appslandia.common.base.Out;
 import com.appslandia.common.cdi.Json;
 import com.appslandia.common.cdi.Json.Profile;
+import com.appslandia.common.jdbc.ResultSetImpl;
 import com.appslandia.common.jdbc.SqlAdminUtils;
 import com.appslandia.common.json.JsonProcessor;
 import com.appslandia.common.utils.ExceptionUtils;
@@ -102,7 +102,7 @@ public class ManageSqlController {
 				}
 
 				// Query
-				try (ResultSet rs = stat.executeQuery(model.getSqlText())) {
+				try (ResultSetImpl rs = new ResultSetImpl(stat.executeQuery(model.getSqlText()))) {
 
 					Out<Integer> count = new Out<>();
 					String content = model.isJsonResult() ? ResultUtils.executeJson(rs, this.jsonProcessor, count) : ResultUtils.executeCSV(rs, count);
